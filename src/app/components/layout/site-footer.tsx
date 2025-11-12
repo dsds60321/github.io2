@@ -10,10 +10,10 @@ export function SiteFooter() {
                     © {year} {siteConfig.author}. All rights reserved.
                 </p>
                 <div className="flex items-center gap-4">
-                    <Link href="https://github.com/kanggeonho" className="transition hover:text-foreground" target="_blank" rel="noreferrer">
+                    <Link href={siteConfig.social.github} className="transition hover:text-foreground" target="_blank" rel="noreferrer">
                         GitHub
                     </Link>
-                    <Link href="mailto:kanggeonho@example.com" className="transition hover:text-foreground">
+                    <Link href={`mailto:${siteConfig.contactEmail}`} className="transition hover:text-foreground">
                         Contact
                     </Link>
                 </div>

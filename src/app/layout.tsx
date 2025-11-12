@@ -17,15 +17,63 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteConfig.url),
-    title: siteConfig.title,
+    title: {
+        default: siteConfig.title,
+        template: `%s · ${siteConfig.title}`,
+    },
     description: siteConfig.description,
+    applicationName: siteConfig.shortTitle,
     keywords: siteConfig.keywords,
+    category: 'technology',
+    authors: [{ name: siteConfig.author }],
+    creator: siteConfig.author,
+    publisher: siteConfig.author,
+    alternates: {
+        canonical: siteConfig.url,
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
+        },
+    },
+    themeColor: siteConfig.themeColor,
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+    },
     openGraph: {
         title: siteConfig.title,
         description: siteConfig.description,
         url: siteConfig.url,
         type: 'website',
+        siteName: siteConfig.title,
+        locale: siteConfig.locale,
+        images: [
+            {
+                url: siteConfig.ogImage,
+                width: 1200,
+                height: 630,
+                alt: siteConfig.title,
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: siteConfig.title,
+        description: siteConfig.description,
+        creator: siteConfig.social.twitter,
         images: [siteConfig.ogImage],
+    },
+    icons: {
+        icon: '/favicon.ico',
+        shortcut: '/favicon.ico',
     },
 };
 

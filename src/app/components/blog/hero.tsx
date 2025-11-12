@@ -26,7 +26,7 @@ export function HeroSection() {
                     </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                    <Link href="https://github.com/kanggeonho" target="_blank" rel="noreferrer">
+                    <Link href={siteConfig.social.github} target="_blank" rel="noreferrer">
                         GitHub 살펴보기
                     </Link>
                 </Button>
