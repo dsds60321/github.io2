@@ -12,10 +12,10 @@ export function HeroSection() {
             </Badge>
             <div className="space-y-6">
                 <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                    심플한 UI와 기록 습관으로 만드는 개발 블로그
+                    기록 습관으로 만드는 개발 블로그
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                    Next.js, Markdown, 그리고 최소한의 규칙으로 작성한 작업 로그를 모아 둡니다. 글 하나가 바로 포트폴리오와 레퍼런스가 되도록 설계했습니다.
+                    공부하면서 정리한 내용을 보관하는 블로그입니다.
                 </p>
             </div>
             <div className="flex flex-wrap gap-3">

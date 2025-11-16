@@ -7,6 +7,7 @@ import { Input } from '@/app/components/ui/input';
 import { buttonVariants } from '@/app/components/ui/button';
 import { Separator } from '@/app/components/ui/separator';
 import { PostCard } from './post-card';
+import { useTopicFilter } from '@/app/context/topic-filter';
 
 interface PostHubProps {
     posts: PostListItem[];
@@ -15,7 +16,7 @@ interface PostHubProps {
 
 export function PostHub({ posts, topics }: PostHubProps) {
     const [query, setQuery] = useState('');
-    const [topic, setTopic] = useState<string>('all');
+    const { topic, setTopic } = useTopicFilter();
 
     const filtered = useMemo(() => {
         return posts.filter((post) => {
@@ -89,7 +90,7 @@ export function PostHub({ posts, topics }: PostHubProps) {
                     ))}
                 </div>
                 <div className="rounded-3xl border bg-secondary/5 p-8 text-center text-sm text-muted-foreground">
-                    Markdown 파일을 추가하고 `npm run export`만 실행하면 GitHub Pages에 즉시 배포됩니다.
+                    개인적으로 공부한 내용이기에 잘못된 정보가 있을 수 있습니다.
                 </div>
             </div>
         </section>

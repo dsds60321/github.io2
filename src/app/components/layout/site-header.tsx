@@ -1,10 +1,27 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { siteConfig } from '@/app/constants/site';
 import { topicDefinitions } from '@/app/constants/topics';
 import { Button } from '@/app/components/ui/button';
+import { useTopicFilter, type TopicFilterValue } from '@/app/context/topic-filter';
 
 export function SiteHeader() {
+    const { setTopic } = useTopicFilter();
+
+    const scrollToPosts = () => {
+        const section = document.getElementById('posts');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
+    const handleTopicSelect = (topicId: TopicFilterValue) => {
+        setTopic(topicId);
+        scrollToPosts();
+    };
+
     return (
         <header className="sticky top-0 z-20 border-b border-border/60 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/50">
             <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
@@ -14,16 +31,25 @@ export function SiteHeader() {
                 </Link>
                 <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
                     {topicDefinitions.map((topic) => (
-                        <Link key={topic.id} href={`/#${topic.id}`} className="transition hover:text-foreground">
+                        <button
+                            key={topic.id}
+                            type="button"
+                            onClick={() => handleTopicSelect(topic.id)}
+                            className="transition hover:text-foreground"
+                        >
                             {topic.label}
-                        </Link>
+                        </button>
                     ))}
                 </nav>
-                <Button asChild variant="secondary" size="sm">
-                    <Link href="#posts" className="flex items-center gap-1">
-                        글 목록
-                        <ArrowUpRight size={16} />
-                    </Link>
+                <Button
+                    type="button"
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => handleTopicSelect('all')}
+                    className="flex items-center gap-1"
+                >
+                    글 목록
+                    <ArrowUpRight size={16} />
                 </Button>
             </div>
         </header>

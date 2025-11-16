@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { siteConfig } from '@/app/constants/site';
 import { SiteFooter } from '@/app/components/layout/site-footer';
 import { SiteHeader } from '@/app/components/layout/site-header';
+import { TopicFilterProvider } from '@/app/context/topic-filter';
 import './globals.css';
 
 const geistSans = Geist({
@@ -85,11 +86,13 @@ export default function RootLayout({
     return (
         <html lang="ko">
             <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground`}>
-                <div className="flex min-h-screen flex-col">
-                    <SiteHeader />
-                    <main className="flex-1 pb-16">{children}</main>
-                    <SiteFooter />
-                </div>
+                <TopicFilterProvider>
+                    <div className="flex min-h-screen flex-col">
+                        <SiteHeader />
+                        <main className="flex-1 pb-16">{children}</main>
+                        <SiteFooter />
+                    </div>
+                </TopicFilterProvider>
             </body>
         </html>
     );

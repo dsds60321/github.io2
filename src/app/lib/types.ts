@@ -1,4 +1,4 @@
-export type PostTopic = 'foundations' | 'craft';
+export type PostTopic = 'netty' | 'java' | 'spring' | 'JPA';
 
 export interface PostSource {
     slug: string;
